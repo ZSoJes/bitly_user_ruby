@@ -1,0 +1,29 @@
+<h1>Bienvenido a la creacion de usuarios</h1>
+<br>
+<center>
+<% if @error %>
+<h2 style="color: red;"><%= @error %></h2>
+<% end %>
+<table style="width: 70%">
+<form action="/new_user" method="post">
+<tr>
+    <td>Nombre:</td>
+    <td><input type="text" name="name" placeholder="Nickname"></td>
+</tr>
+<tr>
+    <td>Email:</td>
+    <td><input type="email" name="email" placeholder="Introduce tu Correo"></td>
+</tr>
+<tr>
+    <td>Contraseña:</td>
+    <td><input type="password" name="pass" placeholder="Contraseña" maxlength="8"></td>
+</tr>
+<tr>
+    <td colspan="2" style="text-align: center; padding-top: 20px"><input type="submit" value="Regístrate" class="boton"></td>
+</tr>
+</form>
+</table>
+</center>
+<hr>
+<br>
+<a href="/" class="boton">Regresar a Home</a>

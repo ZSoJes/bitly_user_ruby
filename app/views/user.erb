@@ -1,0 +1,50 @@
+<h1>Bitly personalizado</h1>
+  <hr>
+  <table style="width: 100%">
+    <tr>
+      <th>
+      <% user = User.find_by(id: session[:user_id])%>
+        <p>Bienvenido <%= user.name %></p>
+      </th>
+      <th style="padding-left: 200px">
+        <a href="/end_session" class="boton">Cerrar Sesion</a>
+      </th>
+    <tr>
+  </table>
+
+  <hr>
+  <br>
+
+  <form method="post" action="/urls">
+    <table>
+      <tr>
+        <th>
+          <input type="text" name="long_url" placeholder="Introduce tu Url" style="padding-right: 60px">
+        </th>
+        <th style="padding-left: 20px">
+          <input type="submit" value="Reduce tu Url" class="boton">
+        </th>
+      </tr>
+    </table>
+  </form>
+  <% if @error %>
+  <h5 style="color: red"><%= @error %></h5>
+  <% end %>
+  <br>
+
+<table style="width: 100%" border="1">
+  <tr>
+    <th><h4>URL::Original</h4></th>
+    <th><h4>URL::Short</h4></th>
+    <th><h4>Clicks</h4></th>
+  </tr>
+
+  <tr>
+ <% @urls.each do |x| %>
+    <td><a href="<%= x.long_url %>"><%= x.long_url %></a></td>
+    <td><a href="/<%= x.short_url[-6, 6] %>"><%= x.short_url %></a></td>
+    <td><%= x.click_count %></td>
+  </tr>
+ <% end%>
+ 
+</table>
